@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular</title>
+</head>
+<body ng-app="Agendas" ng-controller="UsuariosCtrl">
+
+<form name="nombres" id="nombres" ng-submit="setName(nombres);">
+	<input type="text" placeholder="Nombre" ng-model="nombres.name">
+	<input type="text" placeholder="Apellido" ng-model="nombres.last">
+	<input type="submit" value="Enviar">
+</form>
+
+<input type="text" ng-model="buscarUsuarios" placeholder="Buscando usuarios">
+
+<table ng-view>
+	<tr>
+		<th>ID</th>
+		<th>NAME</th>
+		<th>LAST</th>
+	</tr>
+	<tr ng-repeat="usuario in usuarios | filter:buscarUsuarios">
+		<td>{{ usuario.id }}</td>
+		<td>{{ usuario.name }}</td>
+		<td>{{ usuario.last }}</td>
+	</tr>
+</table>
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
